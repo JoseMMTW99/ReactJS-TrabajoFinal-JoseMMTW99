@@ -15,22 +15,22 @@ const  Navbar = () => {
                         <div className="collapse navbar-collapse" id="navbarNav">
                             <ul className="navbar-nav">
                                 <li className="nav-item">
-                                    <NavLink className="nav-link active" aria-current="page" to={"/category/monitores"}>Monitores</NavLink>
+                                    <NavLink className="nav-link" to={"/category/auriculares"}>Auriculares</NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to={"/category/fuentes"}>Fuentes</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to={"/category/auriculares"}>Auriculares</NavLink>
-                                </li>
-                                <li className="nav-item">
                                     <NavLink className="nav-link" to={"/category/gabinetes"}>Gabinetes</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to={"/category/mouses"}>Mouses</NavLink>
+                                    <NavLink className="nav-link" to={"/category/memorias-ram"}>Memorias-Ram</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to={"/category/memorias-ram"}>Memorias-Ram</NavLink>
+                                    <NavLink className="nav-link active" aria-current="page" to={"/category/monitores"}>Monitores</NavLink>
+                                </li>
+                                <li className="nav-item">
+                                    <NavLink className="nav-link" to={"/category/mouses-mousepads"}>Mouses/Mousepads</NavLink>
                                 </li>
                             </ul>
                         </div>
