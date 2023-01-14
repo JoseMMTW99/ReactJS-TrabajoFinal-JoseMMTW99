@@ -1,6 +1,7 @@
 import { getDocs, collection, getFirestore, query, where } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import Promociones from "../venta-gamer/Promociones";
 import ItemList from "./ItemList";
 
 const ItemListContainer = () => {
@@ -19,6 +20,7 @@ const ItemListContainer = () => {
     return (
         <div className="container py-5">
             <ItemList items={items} />
+            <Promociones/>
         </div>
     )
 }

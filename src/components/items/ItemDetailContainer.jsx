@@ -13,7 +13,6 @@ const ItemDetailContainer=()=>{
         getDoc(documento).then((snapShot) => {
             if (snapShot.exists()) {
                 setItem({ id: snapShot.id, ...snapShot.data() });
-                console.log(snapShot.data());
             } else {
                 console.log("No se encontro el documento");
             }
