@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const ItemCount = ({ stockItems }) => {
-    const [counter, setCounter] = useState(1);
-    const [stock, setStock] = useState(stockItems);
-    console.log(stock);
+const ItemCount = ({ stockItems, onAdd }) => {
+    const [counter, setCounter] = useState (1);
+    const [stock, setStock] = useState (stockItems);
+    const [vendido, setVendido] = useState (false);
     console.log(stockItems);
+    console.log(stock);    
 
     const incrementarStock = () => {
         if (counter < stock) {
@@ -18,12 +20,12 @@ const ItemCount = ({ stockItems }) => {
         }
     }
 
-    const onAdd = () => {
-        if (counter <= stock) {
-            setStock(stock - counter);
-            setCounter(1);
-            console.log("Agregaste " + counter + " productos al Carrito!");
-        }
+    const agregarAlCarrito = (quantity) => {
+        setStock(stock-quantity);
+        setVendido(true);
+        onAdd(quantity);
+        setCounter(1);
+        console.log("Agregaste " + counter + " productos al Carrito!");
     }
 
     useEffect(()=>{
@@ -43,7 +45,7 @@ const ItemCount = ({ stockItems }) => {
             </div>
             <div className="row">
                 <div className="col-md-12 mb-3">
-                    <button className="btn btn-outline-primary" onClick={onAdd}>Agregar al carrito</button>
+                    {vendido ? <Link to={"/cart"} className="btn btn-outline-primary">Ir al Carrito</Link>: <button className="btn btn-outline-primary" onClick={()=>{agregarAlCarrito(counter)}}>Agregar al carrito</button>}
                 </div>
             </div>
         </div>
