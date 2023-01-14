@@ -27,7 +27,7 @@ const  Navbar = () => {
                                     <NavLink className="nav-link" to={"/category/memorias-ram"}>Memorias-Ram</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link active" aria-current="page" to={"/category/monitores"}>Monitores</NavLink>
+                                    <NavLink className="nav-link" to={"/category/monitores"}>Monitores</NavLink>
                                 </li>
                                 <li className="nav-item">
                                     <NavLink className="nav-link" to={"/category/mouses-mousepads"}>Mouses/Mousepads</NavLink>
