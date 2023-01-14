@@ -19,15 +19,13 @@ const Cart = () => {
     }
 
     return (
-        <div className="container py-5">
-            <div className="row">
+        <div className="container">
+            <div className="row my-5">
                 <div className="col-md-12">
                     <table className="table">
                         <thead>
                             <tr>
-                                <th scope="col">&nbsp;</th>
-                                <th scope="col">&nbsp;</th>
-                                <th scope="col">&nbsp;</th>
+                                <td colSpan={3}>&nbsp;</td>
                                 <th scope="col" className="text-center"><Link onClick={clear} className="text-decoration-none text-dark" title="Vaciar Carrito">Vaciar Carrito</Link></th>
                                 <td className="text-center align-middle"><Link onClick={clear} title="Vaciar Carrito"><img src={"images/0.delete.svg"} alt={"Eliminar Producto"} width={24} /></Link></td>
                             </tr>
@@ -60,6 +58,9 @@ const Cart = () => {
                                 <td className="text-center">Tickets Totales</td>
                                 <td className="text-center"><b>{parseInt(sumTotal()/15000)}</b></td>
                                 <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td colSpan={5} className="text-center align-middle"><Link to={"./checkout"} className="text-decoration-none text-dark btn btn-light" title="Finalizar Compra">Finalizar Compra</Link></td>
                             </tr>
                         </tbody>
                     </table>
