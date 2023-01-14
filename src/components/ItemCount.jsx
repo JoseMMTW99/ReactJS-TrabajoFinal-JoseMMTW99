@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const ItemCount = ({ stockItems }) => {
     const [counter, setCounter] = useState(1);
     const [stock, setStock] = useState(stockItems);
+    console.log(stock);
+    console.log(stockItems);
 
     const incrementarStock = () => {
         if (counter < stock) {
@@ -24,6 +26,9 @@ const ItemCount = ({ stockItems }) => {
         }
     }
 
+    useEffect(()=>{
+        setStock(stock);
+    },[stock]);
 
     return (
         <div className="container text-center">
