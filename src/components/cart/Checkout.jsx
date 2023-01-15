@@ -25,6 +25,10 @@ const Checkout = () => {
             setOrderId(snapShot.id);
         })
     }
+    
+    const borrarCompra = () =>{
+        clear();
+    }
 
     return (
         <div className="container">
@@ -44,6 +48,7 @@ const Checkout = () => {
                             <input type="number" className="form-control" id="nombre" placeholder="Ingrese su Teléfono" onInput={(e) => { setTelefono(e.target.value) }} />
                         </div>
                         <button type="button" onClick={confirmarCompra} className="btn btn-light">Confirmar Compra</button>
+                        <button type="button" onClick={borrarCompra} className="btn btn-light">Borrar Compra</button>
                     </form>
                 </div>
                 <div className="col">
@@ -73,6 +78,7 @@ const Checkout = () => {
                         <h2>Compra Realizada con Éxito</h2>
                         <p>Su número de orden es:{orderId}</p>
                         <p>Usted con esta compra esta participando con <b>{parseInt(sumTotal()/15000)}</b> tickets, los mismos les seran confirmados por correo electrónico y con su número de orden participara del sorteo. Si usted gana lo contactaremos, le deseamos mucha suerte y agracemos por confiar en nosotros!</p>
+                        <p className="aviso">Le recomendamos sacar un "screenshot" a los datos con los que registro la compra en este momento si no es titular de la cuenta con la que pago, con los mismos puede hacer un seguimiento del sorteo y reclamar los premios.</p>
                     </div> : ""}
                 </div>
             </div>
