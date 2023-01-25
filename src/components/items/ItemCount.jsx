@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 const ItemCount = ({ stockItems, onAdd }) => {
     const [counter, setCounter] = useState (1);
     const [stock, setStock] = useState (stockItems);
-    const [vendido, setVendido] = useState (false);
-    console.log(stockItems);
-    console.log(stock);    
+    const [vendido, setVendido] = useState (false); 
 
     const incrementarStock = () => {
         if (counter < stock) {
@@ -28,8 +26,8 @@ const ItemCount = ({ stockItems, onAdd }) => {
     }
 
     useEffect(()=>{
-        setStock(stock);
-    },[stock]);
+        setStock(stockItems);
+    },[stockItems]);
 
     return (
         <div className="container text-center">
