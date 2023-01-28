@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { Link } from "react-router-dom";
 
 const Checkout = () => {
     const { cart, sumTotal, clear } = useContext(CartContext);
@@ -15,8 +16,9 @@ const Checkout = () => {
         const order = {
             buyer: { name: nombre, email: email, phone: telefono },
             items: cart.map(item => ({ id: item.id, title: item.nombre, price: item.precio, quantity: item.quantity, total_price: item.precio * item.quantity })),
-            date: `${fecha.getDate()}/${fecha.getMonth()+1}/${fecha.getFullYear()}   ${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`,
-            total: sumTotal()
+            date: `${fecha.getDate()}/${fecha.getMonth() + 1}/${fecha.getFullYear()}   ${fecha.getHours()}:${fecha.getMinutes()}:${fecha.getSeconds()}`,
+            total: sumTotal(),
+            tickets: parseInt(sumTotal() / 15000)
         }
 
         const db = getFirestore();
@@ -25,8 +27,8 @@ const Checkout = () => {
             setOrderId(snapShot.id);
         })
     }
-    
-    const borrarCompra = () =>{
+
+    const borrarCompra = () => {
         clear();
     }
 
@@ -37,18 +39,19 @@ const Checkout = () => {
                     <form>
                         <div className="mb-3">
                             <label htmlFor="nombre" className="form-label">Nombre</label>
-                            <input type="email" className="form-control" id="nombre" placeholder="Ingrese su Nombre" onInput={(e) => { setNombre(e.target.value) }} />
+                            <input type="text" className="form-control" id="nombre" placeholder="Ingrese su Nombre" onInput={(e) => { setNombre(e.target.value) }} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">Email</label>
-                            <input type="email" className="form-control" id="email" placeholder="Ingrese su Email" onInput={(e) => { setEmail(e.target.value) }} />
+                            <input type="text" className="form-control" id="email" placeholder="Ingrese su Email" onInput={(e) => { setEmail(e.target.value) }} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="telefono" className="form-label">Teléfono</label>
                             <input type="number" className="form-control" id="nombre" placeholder="Ingrese su Teléfono" onInput={(e) => { setTelefono(e.target.value) }} />
                         </div>
-                        <button type="button" onClick={confirmarCompra} className="btn btn-light">Confirmar Compra</button>
-                        <button type="button" onClick={borrarCompra} className="btn btn-light">Borrar Compra</button>
+                        <div className="d-grid gap-2 m-2">
+                            <button type="button" onClick={confirmarCompra} className="btn btn-light">Confirmar Compra</button>
+                        </div>
                     </form>
                 </div>
                 <div className="col">
@@ -75,10 +78,15 @@ const Checkout = () => {
             <div className="row my-5">
                 <div className="col">
                     {orderId ? <div className="alert alert-success" role="alert">
-                        <h2>Compra Realizada con Éxito</h2>
-                        <p>Su número de orden es:{orderId}</p>
-                        <p>Usted con esta compra esta participando con <b>{parseInt(sumTotal()/15000)}</b> tickets, los mismos les seran confirmados por correo electrónico y con su número de orden participara del sorteo. Si usted gana lo contactaremos, le deseamos mucha suerte y agracemos por confiar en nosotros!</p>
-                        <p className="aviso">Le recomendamos sacar un "screenshot" a los datos con los que registro la compra en este momento si no es titular de la cuenta con la que pago, con los mismos puede hacer un seguimiento del sorteo y reclamar los premios.</p>
+                        <div className="container m-3">
+                            <h2>Compra Realizada con Éxito</h2>
+                            <p>Su código de orden es: {orderId}</p>
+                            <p>Usted con esta compra esta participando con <b>{parseInt(sumTotal() / 15000)}</b> tickets, los mismos les seran confirmados por correo electrónico y con su número de orden participara del sorteo. Si usted gana lo contactaremos, le deseamos mucha suerte y agracemos por confiar en nosotros!</p>
+                            <p className="aviso">Si no es titular de la cuenta con la que pago, le recomendamos sacar un "screenshot" a los datos con los que registro la compra y los productos pedidos del mismo en este momento. Con los mismos puede hacer un seguimiento del sorteo y reclamar los premios.</p>
+                            <div className="d-grid gap-2 d-md-flex justify-content-md-end me-4">
+                                <Link to={"./checkoutend"}><button type="submit" onClick={borrarCompra} className="btn btn-light">Finalizar Compra</button></Link>
+                            </div>
+                        </div>
                     </div> : ""}
                 </div>
             </div>

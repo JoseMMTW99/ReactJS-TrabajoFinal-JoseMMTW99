@@ -6,6 +6,11 @@ const ItemCount = ({ stockItems, onAdd }) => {
     const [stock, setStock] = useState (stockItems);
     const [vendido, setVendido] = useState (false); 
 
+    useEffect(()=>{
+        setStock(stockItems);
+    },[stockItems]);
+
+
     const incrementarStock = () => {
         if (counter < stock) {
             setCounter(counter + 1);
@@ -22,12 +27,7 @@ const ItemCount = ({ stockItems, onAdd }) => {
         setVendido(true);
         onAdd(quantity);
         setCounter(1);
-        console.log("Agregaste " + counter + " productos al Carrito!");
     }
-
-    useEffect(()=>{
-        setStock(stockItems);
-    },[stockItems]);
 
     return (
         <div className="container text-center">

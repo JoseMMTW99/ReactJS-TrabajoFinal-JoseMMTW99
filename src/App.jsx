@@ -10,6 +10,7 @@ import CartContextProvider from "./components/context/CartContext";
 import Cart from "./components/cart/Cart";
 import RedesSociales from "./components/venta-gamer/RedesSociales";
 import Checkout from "./components/cart/Checkout";
+import CheckoutEnd from "./components/cart/CheckoutEnd";
 
 function App() {
     return (
@@ -23,6 +24,7 @@ function App() {
                     <Route path={"/item/:id"} element={<ItemDetailContainer />} />
                     <Route path={"/cart"} element={<Cart/>}/>
                     <Route path={"/cart/checkout"} element={<Checkout/>}/>
+                    <Route path={"/cart/checkout/checkoutend"} element={<CheckoutEnd/>}/>
                     <Route path={"/redessociales"} element={<RedesSociales/>}/>
                     <Route path={"*"} element={<Error404 />} />
                 </Routes>
