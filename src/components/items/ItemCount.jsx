@@ -34,15 +34,15 @@ const ItemCount = ({ stockItems, onAdd }) => {
             <div className="row mb-3">
                 <div className="col-md-12">
                     <div className="btn-group" role="group" aria-label="Basic outlined example">
-                        <button type="button" className="btn btn-outline-primary" onClick={decrementarStock}>-</button>
-                        <button type="button" className="btn btn-outline-primary">{counter}</button>
-                        <button type="button" className="btn btn-outline-primary" onClick={incrementarStock}>+</button>
+                        <button type="button" className="btn btn-outline-dark" onClick={decrementarStock}>-</button>
+                        <button type="button" className="btn btn-outline-dark">{counter}</button>
+                        <button type="button" className="btn btn-outline-dark" onClick={incrementarStock}>+</button>
                     </div>
                 </div>
             </div>
             <div className="row">
                 <div className="col-md-12 mb-3">
-                    {vendido ? <Link to={"/cart"} className="btn btn-outline-primary">Ir al Carrito</Link>: <button className="btn btn-outline-primary" onClick={()=>{agregarAlCarrito(counter)}}>Agregar al carrito</button>}
+                    {vendido ? <Link to={"/cart"} className="btn btn-outline-dark">Ir al Carrito</Link>: <button className="btn btn-outline-dark" onClick={()=>{agregarAlCarrito(counter)}}>Agregar al carrito</button>}
                 </div>
             </div>
         </div>
