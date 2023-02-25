@@ -60,7 +60,7 @@ const Cart = () => {
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td colSpan={5} className="text-center align-middle"><Link to={"./checkout"} className="text-decoration-none text-dark btn btn-light" title="Finalizar Compra">Finalizar Compra</Link></td>
+                                <td colSpan={5} className="text-center align-middle"><Link to={"./checkout"} className="text-decoration-none text-dark btn btn-light" title="Finalizar Compra">Relizar Pago</Link></td>
                             </tr>
                         </tbody>
                     </table>

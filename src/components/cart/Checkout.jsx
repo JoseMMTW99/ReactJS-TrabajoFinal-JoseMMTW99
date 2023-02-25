@@ -38,8 +38,8 @@ const Checkout = () => {
                 <div className="col">
                     <form>
                         <div className="mb-3">
-                            <label htmlFor="nombre" className="form-label">Nombre</label>
-                            <input type="text" className="form-control" id="nombre" placeholder="Ingrese su Nombre" onInput={(e) => { setNombre(e.target.value) }} />
+                            <label htmlFor="nombre" className="form-label">Nombre y Apellido</label>
+                            <input type="text" className="form-control" id="nombre" placeholder="Ingrese su Nombre y Apellido" onInput={(e) => { setNombre(e.target.value) }} />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">Email</label>
